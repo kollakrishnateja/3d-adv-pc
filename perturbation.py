@@ -16,11 +16,11 @@ import joblib
 parser = argparse.ArgumentParser()
 parser.add_argument('--gpu', type=int, default=0, help='GPU to use [default: GPU 0]')
 parser.add_argument('--model', default='pointnet_cls', help='Model name: pointnet_cls or pointnet_cls_basic [default: pointnet_cls]')
-parser.add_argument('--log_dir', default='log', help='Log dir [default: log]')
+parser.add_argument('--log_dir', default='/content/3d-adv-pc/log', help='Log dir [default: log]')
 parser.add_argument('--batch_size', type=int, default=5, help='Batch Size for attack [default: 5]')
 parser.add_argument('--num_point', type=int, default=1024, help='Point Number [256/512/1024/2048] [default: 1024]')
-parser.add_argument('--data_dir', default='data', help='data folder path [data]')
-parser.add_argument('--dump_dir', default='perturbation', help='dump folder path [perturbation]')
+parser.add_argument('--data_dir', default='/content/3d-adv-pc/data', help='data folder path [data]')
+parser.add_argument('--dump_dir', default='/content/3d-adv-pc/perturbation', help='dump folder path [perturbation]')
 
 parser.add_argument('--target', type=int, default=5, help='target class index')
 parser.add_argument('--lr_attack', type=float, default=0.01, help='learning rate for optimization based attack')
@@ -45,7 +45,6 @@ DATA_DIR = '/content/3d-adv-pc/data/'
 TARGET=FLAGS.target
 LR_ATTACK=FLAGS.lr_attack
 #WEIGHT=FLAGS.weight
-print(os.path.join(DATA_DIR,'attacked_data.z'))
 attacked_data_all=joblib.load(os.path.join(DATA_DIR,'attacked_data.z'))
 
 INITIAL_WEIGHT=FLAGS.initial_weight
